@@ -1,0 +1,112 @@
+{% block resume %}
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Curriculum Vitae</h2>
+            <p>{{ summary.description ?? '📖 Prêt à raconter votre parcours exceptionnel ? Ajoutez votre résumé pour captiver vos visiteurs !' }}</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    
+                    {# Résumé #}
+                    <h3 class="resume-title">Résumé</h3>
+                    {% if summary %}
+                        <div class="resume-item pb-0">
+                            <h4>{{ summary.title }}</h4>
+                            {% if summary.subtitle %}
+                                <p><em>{{ summary.subtitle }}</em></p>
+                            {% endif %}
+                            {% if summary.description %}
+                                <p>{{ summary.description }}</p>
+                            {% endif %}
+                            {% if summary.details %}
+                                <ul>
+                                    {% for detail in summary.details %}
+                                        <li>{{ detail }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div><!-- End Resume Item -->
+                    {% else %}
+                        <div class="resume-item pb-0 text-muted">
+                            <p>✨ <em>Votre résumé professionnel vous attend ! Décrivez votre profil en quelques lignes percutantes.</em></p>
+                        </div>
+                    {% endif %}
+
+                    {# Éducation #}
+                    <h3 class="resume-title">Éducation</h3>
+                    {% if education|length > 0 %}
+                        {% for item in education %}
+                            <div class="resume-item">
+                                <h4>{{ item.title }}</h4>
+                                {% if item.subtitle %}
+                                    <h5>{{ item.subtitle }}</h5>
+                                {% endif %}
+                                {% if item.period %}
+                                    <h5>{{ item.period }}</h5>
+                                {% endif %}
+                                {% if item.location %}
+                                    <p><em>{{ item.location }}</em></p>
+                                {% endif %}
+                                {% if item.description %}
+                                    <p>{{ item.description }}</p>
+                                {% endif %}
+                            </div><!-- End Resume Item -->
+                        {% endfor %}
+                    {% else %}
+                        <div class="resume-item text-muted">
+                            <p>🎓 <em>Aucune formation ajoutée. Partagez votre parcours académique pour renforcer votre crédibilité !</em></p>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    
+                    {# Expérience Professionnelle #}
+                    <h3 class="resume-title">Expérience Professionnelle</h3>
+                    {% if experience|length > 0 %}
+                        {% for item in experience %}
+                            <div class="resume-item">
+                                <h4>{{ item.title }}</h4>
+                                {% if item.subtitle %}
+                                    <h5>{{ item.subtitle }}</h5>
+                                {% endif %}
+                                {% if item.period %}
+                                    <h5>{{ item.period }}</h5>
+                                {% endif %}
+                                {% if item.location %}
+                                    <p><em>{{ item.location }}</em></p>
+                                {% endif %}
+                                {% if item.description %}
+                                    <p>{{ item.description }}</p>
+                                {% endif %}
+                                {% if item.details %}
+                                    <ul>
+                                        {% for detail in item.details %}
+                                            <li>{{ detail }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div><!-- End Resume Item -->
+                        {% endfor %}
+                    {% else %}
+                        <div class="resume-item text-muted">
+                            <p>💼 <em>Pas encore d'expérience professionnelle ? Ajoutez vos stages, projets ou missions freelance !</em></p>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section><!-- /Resume Section -->
+{% endblock %}

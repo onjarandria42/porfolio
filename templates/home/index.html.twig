@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ siteSettings.siteTitle|default('Onjarandria Portfolio') }}{% endblock %}
+
+{% block meta_description %}{{ siteSettings.siteDescription|default('Portfolio professionnel') }}{% endblock %}
+
+{% block meta_keywords %}{{ siteSettings.metaKeywords|default('portfolio, développeur, web') }}{% endblock %}
+
+{% block header %}
+  {# Le header est maintenant géré automatiquement par base.html.twig via HeaderController #}
+  {{ parent() }}
+{% endblock %}
+
+{% block hero %}
+  {# Inclusion dynamique de la Hero Section depuis le HeroController #}
+  {{ render(controller('App\\Controller\\HeroController::hero')) }}
+{% endblock %}
+
+{% block about %}
+  {# Inclusion dynamique de la About Section depuis le AboutController #}
+  {{ render(controller('App\\Controller\\AboutController::about')) }}
+  
+  {# Inclusion des stats depuis le StatsController #}
+  {{ render(controller('App\\Controller\\StatsController::index')) }}
+{% endblock %}
+
+{% block skills %}
+  {{ render(controller('App\\Controller\\SkillsController::index')) }}
+{% endblock %}
+
+{% block resume %}
+  {{ render(controller('App\\Controller\\ResumeController::index')) }}
+{% endblock %}
+
+{% block porfolio %}
+  {{ render(controller('App\\Controller\\PorfolioController::index')) }}
+{% endblock %}
+
+{% block services %}
+  {{ render(controller('App\\Controller\\ServicesController::index')) }}
+{% endblock %}
+
+{% block testimonials %}
+  {{ render(controller('App\\Controller\\TestimonialsController::index')) }}
+{% endblock %}
+
+{% block contact %}
+  {{ render(controller('App\\Controller\\ContactController::index')) }}
+{% endblock %}
+
+{% block footer %}
+  {% include 'partials/footer.html.twig' %}
+{% endblock %}

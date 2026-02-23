@@ -1,0 +1,6 @@
+ {% block about %}
+  {# Inclusion dynamique de la About Section depuis le HeroController #}
+    {{ render(controller('App\\Controller\\AboutController::about')) }}
+  {% endblock %}
+  
+  

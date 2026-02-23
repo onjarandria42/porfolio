@@ -1,0 +1,14 @@
+{# templates/components/site_settings.html.twig #}
+{% if siteSettings and siteSettings.favicon %}
+    <link href="{{ asset('uploads/settings/' ~ siteSettings.favicon) }}" rel="icon">
+    <link href="{{ asset('uploads/settings/' ~ siteSettings.favicon) }}" rel="apple-touch-icon">
+{% else %}
+    <link href="{{ asset('assets/img/onjaniaina-profile.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+{% endif %}
+
+<title>{% block title %}{{ siteSettings.siteName|default('Mon Portfolio') }}{% endblock %}</title>
+
+{% if siteSettings and siteSettings.siteDescription %}
+    <meta name="description" content="{{ siteSettings.siteDescription }}">
+{% endif %}

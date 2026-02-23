@@ -1,0 +1,44 @@
+{% block services %}
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Services</h2>
+            <p>Découvrez les services que je propose pour vous accompagner dans vos projets</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+            {% if services|length > 0 %}
+                <div class="row gy-4">
+                    {% for service in services %}
+                        <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="{{ 100 + (loop.index0 * 100) }}">
+                            <div class="icon flex-shrink-0">
+                                <i class="bi {{ service.icon|default('bi-briefcase') }}"></i>
+                            </div>
+                            <div>
+                                <h4 class="title">
+                                    {% if service.link %}
+                                        <a href="{{ service.link }}" class="stretched-link">{{ service.title }}</a>
+                                    {% else %}
+                                        {{ service.title }}
+                                    {% endif %}
+                                </h4>
+                                {% if service.description %}
+                                    <p class="description">{{ service.description }}</p>
+                                {% endif %}
+                            </div>
+                        </div><!-- End Service Item -->
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    Aucun service n'a encore été ajouté.
+                </div>
+            {% endif %}
+
+        </div>
+
+    </section><!-- /Services Section -->
+{% endblock %}

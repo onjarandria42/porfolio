@@ -1,0 +1,213 @@
+/* ===== RESET & BODY ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #0b1e35 50%, #0a2540 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== FULL HEIGHT CONTAINER ===== */
+.container {
+	max-width: 100% !important;
+    width: 100% !important;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* ===== CARD ===== */
+#LoginAndRegistrationForm {
+    width: 520px; /* largeur fixe desktop */
+    max-width: 100%; /* sécurité responsive */
+    background: #ffffff;
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.5s ease;
+    box-sizing: border-box;
+}
+
+/* ===== TITLES ===== */
+#formTitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px; /* plus gros */
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+/* ===== INPUTS ===== */
+.input-text,
+#LoginEmail,
+#LoginPassword {
+    width: 100%;
+    padding: 16px 18px; /* un peu plus grand */
+    border-radius: 14px;
+    border: 2px solid #e5e7eb;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-text:focus,
+#LoginEmail:focus,
+#LoginPassword:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.15);
+    outline: none;
+}
+
+.mt-10 {
+    margin-top: 18px;
+}
+
+.mt-20 {
+    margin-top: 28px;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* espace vertical entre inputs */
+}
+
+/* ===== BUTTON ===== */
+.Submit-Btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.4);
+}
+
+.Submit-Btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 50px rgba(37, 99, 235, 0.45);
+}
+
+.Submit-Btn:active {
+    transform: translateY(0);
+}
+
+/* ===== REMEMBER ME ===== */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* ===== ALERTS ===== */
+.alert {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 22px;
+}
+
+.alert-danger {
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+
+.alert-info {
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    color: #0369a1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    #LoginAndRegistrationForm {
+        max-width: 400px; /* moins large sur tablette */
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    #LoginAndRegistrationForm {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+	@media (max-width: 426px) {
+    #LoginAndRegistrationForm {
+        width: 95%;
+        padding: 30px 20px;
+    }
+}
+
+    .Submit-Btn {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    #formTitle {
+        font-size: 22px;
+    }
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.Submit-Btn {
+    position: relative;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #149ddd, #0d6efd);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.Submit-Btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

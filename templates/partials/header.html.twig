@@ -1,0 +1,89 @@
+{% block header %}
+<header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    {# Photo de profil - depuis l'entité Hero #}
+    <div class="profile-img">
+        {% if hero and hero.profileImage %}
+            <img src="{{ asset('uploads/hero/' ~ hero.profileImage) }}" 
+                 alt="{{ hero.fullname }}" 
+                 class="img-fluid rounded-circle">
+        {% else %}
+            <img src="{{ asset('assets/img/onjaniainaPorfolio_profile.png') }}" 
+                 alt="Profile" 
+                 class="img-fluid rounded-circle">
+        {% endif %}
+    </div>
+
+    {# Nom et logo - depuis l'entité Hero ou SiteSettings #}
+    <a href="{{ path('home') }}" class="logo d-flex align-items-center justify-content-center">
+        {% if siteSettings and siteSettings.siteLogo %}
+            <img src="{{ asset('uploads/settings/' ~ siteSettings.siteLogo) }}" alt="{{ siteSettings.siteName }}">
+        {% endif %}
+        <h1 class="sitename">
+            {% if hero %}
+                {{ hero.fullname }}
+            {% elseif siteSettings and siteSettings.siteName %}
+                {{ siteSettings.siteName }}
+            {% else %}
+                Onjainiaina RANDRIAMAHAZOMANANA
+            {% endif %}
+        </h1>
+    </a>
+
+    {# Réseaux sociaux - depuis l'entité ContactInfo #}
+    <div class="social-links text-center">
+        {% if contactInfo %}
+            {% if contactInfo.twitter %}
+                <a href="{{ contactInfo.twitter }}" target="_blank" class="twitter" title="Twitter">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+            {% endif %}
+            
+            {% if contactInfo.facebook %}
+                <a href="{{ contactInfo.facebook }}" target="_blank" class="facebook" title="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            {% endif %}
+            
+            {% if contactInfo.instagram %}
+                <a href="{{ contactInfo.instagram }}" target="_blank" class="instagram" title="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            {% endif %}
+            
+            {% if contactInfo.github %}
+                <a href="{{ contactInfo.github }}" target="_blank" class="github" title="GitHub">
+                    <i class="bi bi-github"></i>
+                </a>
+            {% endif %}
+            
+            {% if contactInfo.linkedin %}
+                <a href="{{ contactInfo.linkedin }}" target="_blank" class="linkedin" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            {% endif %}
+        {% else %}
+            {# Liens par défaut si aucune info de contact n'est configurée #}
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        {% endif %}
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+        <ul>
+            <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+            <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+            <li><a href="#skills"><i class="bi bi-briefcase navicon"></i> Skills</a></li>
+            <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+            <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
+            <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+            <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+            <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Back to top</span> <i class="bi bi-chevron-up toggle-dropdown"></i></a></li>
+        </ul>
+    </nav>
+
+</header>
+{% endblock %}

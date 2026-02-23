@@ -1,0 +1,42 @@
+{% block hero %}
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
+
+    {# Image dynamique du Hero depuis la base #}
+    {% if hero and hero.image %}
+        <img src="{{ asset('uploads/hero/' ~ hero.image) }}" 
+             alt="{{ hero.fullName }}" 
+             data-aos="fade-in"
+             class="">
+    {% else %}
+        <img src="{{ asset('assets/img/hero-bg.jpg') }}" 
+             alt="Hero Background" 
+             data-aos="fade-in"
+             class="">
+    {% endif %}
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        {# Nom du Hero depuis la base #}
+        {% if hero %}
+            <h2>{{ hero.fullName }}</h2>
+        {% else %}
+            <h2>✨ Votre Nom</h2>
+        {% endif %}
+
+        {# Jobs actifs depuis la base #}
+        {% if job is not empty %}
+            <p>I'm 
+                <span class="typed" data-typed-items="{% for j in job %}{{ j.title }}{% if not loop.last %}, {% endif %}{% endfor %}"></span>
+                <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+                <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+            </p>
+            {% else %}
+            <p>I'm 
+                <span class="typed" data-typed-items="Ajouter un job"></span>
+                <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+                <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+        {% endif %}
+    </div>
+
+</section><!-- /Hero Section -->
+{% endblock %}

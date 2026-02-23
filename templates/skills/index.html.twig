@@ -1,0 +1,72 @@
+{% block skills %}
+    <!-- Skills Section -->
+    <section id="skills" class="skills section light-background">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Compétences</h2>
+            <p>Découvrez mes compétences techniques et mon niveau d'expertise dans chaque domaine</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            {% if skills|length > 0 %}
+                <div class="row skills-content skills-animation">
+                    <div class="col-lg-6">
+                        {% for skill in skills|slice(0, (skills|length / 2)|round(0, 'ceil')) %}
+                            <div class="progress">
+                                <span class="skill">
+                                    <span>{{ skill.name }}</span> 
+                                    <i class="val">{{ skill.percentage }}%</i>
+                                </span>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar" 
+                                         role="progressbar" 
+                                         aria-valuenow="{{ skill.percentage }}" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100"
+                                         style="width: {{ skill.percentage }}%;">
+                                    </div>
+                                </div>
+                            </div><!-- End Skills Item -->
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-lg-6">
+                        {% for skill in skills|slice((skills|length / 2)|round(0, 'ceil')) %}
+                            <div class="progress">
+                                <span class="skill">
+                                    <span>{{ skill.name }}</span> 
+                                    <i class="val">{{ skill.percentage }}%</i>
+                                </span>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar" 
+                                         role="progressbar" 
+                                         aria-valuenow="{{ skill.percentage }}" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100"
+                                         style="width: {{ skill.percentage }}%;">
+                                    </div>
+                                </div>
+                            </div><!-- End Skills Item -->
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    Aucune compétence n'a encore été ajoutée.
+                </div>
+            {% endif %}
+
+            {% if siteSettings and siteSettings.cvFile %}
+                <div class="text-center mt-4">
+                    <a href="{{ asset('uploads/settings/' ~ siteSettings.cvFile) }}" class="btn btn-primary" download>
+                        <i class="bi bi-download"></i> Télécharger mon CV
+                    </a>
+                </div>
+            {% endif %}
+
+        </div>
+
+    </section><!-- /Skills Section -->
+{% endblock %}

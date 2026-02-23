@@ -1,0 +1,98 @@
+{% extends 'loginbaseform.html.twig' %}
+
+{% block title %}Login Admin{% endblock %}
+
+{% block form %}
+<div class="container">
+    <div id="LoginAndRegistrationForm">
+        
+        {# Logo / Icon #}
+        <div class="logo-container">
+            <div class="logo-circle">
+                {# Icône Shield (FiShield) #}
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <h1 id="formTitle">Administration</h1>
+            <p class="subtitle">Connectez-vous pour accéder au panneau d'administration</p>
+        </div>
+
+        {# Error message #}
+        {% if error %}
+            <div class="alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="alert-info">
+                Vous êtes déjà connecté en tant que {{ app.user.userIdentifier }},
+                <a href="{{ logout_path() }}">Se déconnecter</a>
+            </div>
+        {% endif %}
+
+        {# Form #}
+        <form method="post">
+            
+            {# Email #}
+            <div class="input-group">
+                <label class="input-label" for="LoginEmail">Adresse email</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">
+                        {# FiMail #}
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </span>
+                    <input
+                        id="LoginEmail"
+                        class="input-text"
+                        type="email"
+                        name="email"
+                        value="{{ last_username }}"
+                        placeholder="admin@example.com"
+                        required
+                        autofocus
+                    >
+                </div>
+            </div>
+
+            {# Password #}
+            <div class="input-group">
+                <label class="input-label" for="LoginPassword">Mot de passe</label>
+                <div class="input-wrapper password-wrapper">
+                    <span class="input-icon">
+                        {# FiLock #}
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </span>
+                    <input
+                        id="LoginPassword"
+                        class="input-text"
+                        type="password"
+                        name="password"
+                        placeholder="••••••••"
+                        required
+                    >
+                    <button type="button" id="togglePassword" class="toggle-password">
+                        {# FiEye #}
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {# Button #}
+            <button type="submit" class="Submit-Btn" id="LoginBtn">
+                <span class="btn-icon">
+                    {# FiLock petit #}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </span>
+                <span class="btn-text">Se connecter</span>
+                <span class="spinner"></span>
+            </button>
+        </form>
+
+        <p class="login-footer">Accès réservé à l'administrateur</p>
+    </div>
+</div>
+{% endblock %}

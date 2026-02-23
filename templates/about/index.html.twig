@@ -1,0 +1,60 @@
+{% block about %}
+<!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>{{ about.description ?? '✨ Une superbe description vous attend ! Ajoutez-la dans l\'administration.' }}</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+          {% if about %}
+          <img src="{{ asset('uploads/about/' ~ about.profileImage) }}" 
+                 class="img-fluid" 
+                 alt="{{ about.hero.fullname  }}">
+          {% else %}
+            <img src="{{ asset('uploads/about/default-profile.jpg') }}" 
+                 class="img-fluid" 
+                 alt="Votre nom ici">
+
+          {% endif %}
+          </div>
+          
+          <div class="col-lg-8 content">
+            <h2>{{ about.title ?? 'Votre titre professionnel' }}.</h2>
+            <p class="fst-italic py-3">
+             {{ about.headline ?? '🚀 Une accroche percutante pour impressionner vos visiteurs !' }}
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>{{ about.birthday ?? '🎂 À définir' }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>{{ about.website ?? '🌐 Votre site web' }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{ about.phone ?? '📞 Votre numéro' }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{ about.city ?? '📍 Votre ville' }}, Madagascar</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ about.age ?? '✨ Votre âge' }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>{{ about.degree ?? '🎓 Votre diplôme' }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{ about.email ?? '✉️ Votre email' }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>{{ about.freelanceStatus ?? '💼 Disponibilité ?' }}</span></li>
+                </ul>
+              </div>
+            </div>
+            <p class="py-3">
+              {{ about.longDescription ?? '📝 Racontez votre histoire, vos passions et vos expériences pour créer une vraie connexion avec vos visiteurs !' }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+    
+{% endblock %}

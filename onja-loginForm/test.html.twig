@@ -1,0 +1,55 @@
+{% extends 'loginbaseform.html.twig' %}
+
+{% block title %}Login Admin{% endblock %}
+
+{% block form %}
+<div class="login-container">
+
+    <div class="login-card">
+        <h1>Administration</h1>
+        <p class="subtitle">Connectez-vous pour continuer</p>
+
+        {% if error %}
+            <div class="error-box">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="info-box">
+                Connecté en tant que {{ app.user.userIdentifier }}
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% endif %}
+
+        <form method="post" id="loginForm">
+
+            <input 
+                type="email"
+                name="email"
+                value="{{ last_username }}"
+                placeholder="Email"
+                required
+                autofocus
+            >
+
+            <div class="password-wrapper">
+                <input 
+                    type="password"
+                    name="password"
+                    id="passwordInput"
+                    placeholder="Mot de passe"
+                    required
+                >
+                <span id="togglePassword">👁</span>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button type="submit" id="loginBtn">Se connecter</button>
+
+        </form>
+    </div>
+
+</div>
+{% endblock %}
